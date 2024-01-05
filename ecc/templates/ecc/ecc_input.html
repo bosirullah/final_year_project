@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}    
+    {% bootstrap_messages %}
+
     <title>ECC Input Form</title>
     <style>
         label {
@@ -25,17 +28,19 @@
     </style>
 </head>
 <body class="bg-light">
-    <div class="container mt-5">
-        <h1 class="display-4 text-center mb-5">ECC Input Form</h1>
-        <form method="post" action="{% url 'ecc_input' %}" class="needs-validation" novalidate>
-            {% csrf_token %}
-            <div class="form-group ">
-                {{ form.as_p }}
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-lg btn-success mt-5">Proceed</button>
+    {% block content %}
+        <div class="container mt-5">
+            <h1 class="display-4 text-center mb-5">ECC Input Form</h1>
+            <form method="post" action="{% url 'ecc_input' %}" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="form-group ">
+                    {{ form.as_p }}
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-lg btn-success mt-5">Proceed</button>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
+    {% endblock content %}
 </body>
 </html>
