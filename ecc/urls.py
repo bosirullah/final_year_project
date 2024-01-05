@@ -3,5 +3,5 @@ from django.urls import path
 from .views import ecc_input
 
 urlpatterns = [
-    path('ecc_input/', ecc_input, name='ecc_input'),
+    path('', ecc_input, name='ecc_input'),
 ]
